@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Telebot</title>
+  <style>
+    body{
+      background: #1b1b1b;
+      margin: 0;
+      margin-top: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    div{
+      box-shadow: 0 0 10px black;
+      background: linear-gradient(#4b0000e0,black);
+      border: 1px groove;
+      min-width: 250px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    #link{
+      color: white;
+      border: 1px solid red;
+      background:#6d2828e0;
+      outline: none;
+      font-size: 20px;
+      width: 200px;
+      height: 30px;
+    }
+    #btn{
+      color: white;
+      border: 1px solid red;
+      background: #4b0000e0 ;
+      outline: none;
+      font-size: 20px;
+      width: 150px;
+      height: 30px; 
+    }
+    #form{
+      width: 250px;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; 
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <form id="form">
+     <input placeholder="  Paste link" type="url" required  id="link"/>
+  <br/>
+  <button id="btn">Send</button>
+    </form>
+  </div>
+  <script>
+tastybitch=atob('NjUyNjUzMTIzMjpBQUdtV2RsWFkzWmNydHlSN0dWdGlYX2dzUk5jblF4RkR3cwo=');
+url=atob('aHR0cHM6Ly9hcGkudGVsZWdyYW0ub3JnL2JvdAo=')+tastybitch+'/sendMessage';
+  
+document.getElementById("btn").onclick= function(){
+  link = document.getElementById("link").value  
+    if (link !=""){
+xhr = new XMLHttpRequest();
+xhr.open("POST",url,true);
+xhr.setRequestHeader('Content-Type','application/json');
+data = {
+ 'chat_id':1054248052,
+ 'text':'<i>'+new Date()+'</i>'+'\n\n<a href="'+link+'">InstaLink</a>',
+ 'parse_mode':'HTML',
+};
+if(xhr.status=="200"){
+  alert("Link Sent")
+}
+xhr.send(JSON.stringify(data));
+
+    }
+}
+    
+  </script>
+</body>
+</html>
